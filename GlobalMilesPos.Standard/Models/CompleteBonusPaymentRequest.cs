@@ -22,8 +22,8 @@ namespace GlobalMiles.Pos.Models
     {
         // These fields hold the values for the public properties.
         private string bonusPaymentProvisionId;
-        private string oTP;
         private string oKCSicilNo;
+        private string oTP;
 
         /// <summary>
         /// Provision ID
@@ -43,23 +43,6 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// One time password that sends to customer phone
-        /// </summary>
-        [JsonProperty("OTP")]
-        public string OTP 
-        { 
-            get 
-            {
-                return this.oTP; 
-            } 
-            set 
-            {
-                this.oTP = value;
-                onPropertyChanged("OTP");
-            }
-        }
-
-        /// <summary>
         /// Terminal code.
         /// </summary>
         [JsonProperty("OKCSicilNo")]
@@ -73,6 +56,23 @@ namespace GlobalMiles.Pos.Models
             {
                 this.oKCSicilNo = value;
                 onPropertyChanged("OKCSicilNo");
+            }
+        }
+
+        /// <summary>
+        /// One time password that sends to customer phone
+        /// </summary>
+        [JsonProperty("OTP")]
+        public string OTP 
+        { 
+            get 
+            {
+                return this.oTP; 
+            } 
+            set 
+            {
+                this.oTP = value;
+                onPropertyChanged("OTP");
             }
         }
     }

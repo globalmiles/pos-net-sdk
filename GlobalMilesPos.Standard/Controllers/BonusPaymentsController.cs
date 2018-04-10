@@ -51,38 +51,28 @@ namespace GlobalMiles.Pos.Controllers
 
         /// <summary>
         /// After getting customer info's and RecognitionID to start Payment with Miles Use this API.
-        /// After calling this API successfully OTP code send to cutomer GSM number. This OTP must be used with Complete API in order to complete sale.
+        /// After calling this API successfully OTP code send to customer GSM number. This OTP must be used with Complete API in order to complete sale.
+        /// You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+        /// and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
         /// </summary>
-        /// <param name="accept">Required parameter: It advertises which content type is able to understand.</param>
-        /// <param name="contentType">Required parameter: It tells the client what the content type of the returned.</param>
-        /// <param name="authorization">Required parameter: It includes OAuth2 token.</param>
         /// <param name="body">Required parameter: The body of the request.</param>
         /// <return>Returns the Models.StartBonusPaymentResponse response from the API call</return>
-        public Models.StartBonusPaymentResponse CreateStartBonusPayment(
-                string accept,
-                string contentType,
-                string authorization,
-                Models.StartBonusPaymentRequest body)
+        public Models.StartBonusPaymentResponse CreateStartBonusPayment(Models.StartBonusPaymentRequest body)
         {
-            Task<Models.StartBonusPaymentResponse> t = CreateStartBonusPaymentAsync(accept, contentType, authorization, body);
+            Task<Models.StartBonusPaymentResponse> t = CreateStartBonusPaymentAsync(body);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
         /// <summary>
         /// After getting customer info's and RecognitionID to start Payment with Miles Use this API.
-        /// After calling this API successfully OTP code send to cutomer GSM number. This OTP must be used with Complete API in order to complete sale.
+        /// After calling this API successfully OTP code send to customer GSM number. This OTP must be used with Complete API in order to complete sale.
+        /// You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+        /// and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
         /// </summary>
-        /// <param name="accept">Required parameter: It advertises which content type is able to understand.</param>
-        /// <param name="contentType">Required parameter: It tells the client what the content type of the returned.</param>
-        /// <param name="authorization">Required parameter: It includes OAuth2 token.</param>
         /// <param name="body">Required parameter: The body of the request.</param>
         /// <return>Returns the Models.StartBonusPaymentResponse response from the API call</return>
-        public async Task<Models.StartBonusPaymentResponse> CreateStartBonusPaymentAsync(
-                string accept,
-                string contentType,
-                string authorization,
-                Models.StartBonusPaymentRequest body)
+        public async Task<Models.StartBonusPaymentResponse> CreateStartBonusPaymentAsync(Models.StartBonusPaymentRequest body)
         {
             //Check if authentication token is set
             AuthManager.Instance.CheckAuthorization();
@@ -102,10 +92,7 @@ namespace GlobalMiles.Pos.Controllers
             {
                 { "user-agent", "APIMATIC 2.0" },
                 { "accept", "application/json" },
-                { "content-type", "application/json; charset=utf-8" },
-                { "Accept", accept },
-                { "Content-Type", contentType },
-                { "Authorization", authorization }
+                { "content-type", "application/json; charset=utf-8" }
             };
             _headers.Add("Authorization", string.Format("Bearer {0}", Configuration.OAuthToken.AccessToken));
 
@@ -132,37 +119,27 @@ namespace GlobalMiles.Pos.Controllers
         }
 
         /// <summary>
-        /// In order to finalise payment with Miles use this API.Use the OTP number  which is send to user GSM on the Request body.
+        /// In order to finalize payment with Miles use this API. Use the OTP number  which is send to user GSM on the Request body.
+        /// You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+        /// and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
         /// </summary>
-        /// <param name="accept">Required parameter: It advertises which content type is able to understand.</param>
-        /// <param name="contentType">Required parameter: It tells the client what the content type of the returned.</param>
-        /// <param name="authorization">Required parameter: It includes OAuth2 token.</param>
         /// <param name="body">Required parameter: The body of the request.</param>
         /// <return>Returns the Models.CompleteBonusPaymentResponse response from the API call</return>
-        public Models.CompleteBonusPaymentResponse CreateCompleteBonusPayment(
-                string accept,
-                string contentType,
-                string authorization,
-                Models.CompleteBonusPaymentRequest body)
+        public Models.CompleteBonusPaymentResponse CreateCompleteBonusPayment(Models.CompleteBonusPaymentRequest body)
         {
-            Task<Models.CompleteBonusPaymentResponse> t = CreateCompleteBonusPaymentAsync(accept, contentType, authorization, body);
+            Task<Models.CompleteBonusPaymentResponse> t = CreateCompleteBonusPaymentAsync(body);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
         /// <summary>
-        /// In order to finalise payment with Miles use this API.Use the OTP number  which is send to user GSM on the Request body.
+        /// In order to finalize payment with Miles use this API. Use the OTP number  which is send to user GSM on the Request body.
+        /// You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+        /// and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
         /// </summary>
-        /// <param name="accept">Required parameter: It advertises which content type is able to understand.</param>
-        /// <param name="contentType">Required parameter: It tells the client what the content type of the returned.</param>
-        /// <param name="authorization">Required parameter: It includes OAuth2 token.</param>
         /// <param name="body">Required parameter: The body of the request.</param>
         /// <return>Returns the Models.CompleteBonusPaymentResponse response from the API call</return>
-        public async Task<Models.CompleteBonusPaymentResponse> CreateCompleteBonusPaymentAsync(
-                string accept,
-                string contentType,
-                string authorization,
-                Models.CompleteBonusPaymentRequest body)
+        public async Task<Models.CompleteBonusPaymentResponse> CreateCompleteBonusPaymentAsync(Models.CompleteBonusPaymentRequest body)
         {
             //Check if authentication token is set
             AuthManager.Instance.CheckAuthorization();
@@ -182,10 +159,7 @@ namespace GlobalMiles.Pos.Controllers
             {
                 { "user-agent", "APIMATIC 2.0" },
                 { "accept", "application/json" },
-                { "content-type", "application/json; charset=utf-8" },
-                { "Accept", accept },
-                { "Content-Type", contentType },
-                { "Authorization", authorization }
+                { "content-type", "application/json; charset=utf-8" }
             };
             _headers.Add("Authorization", string.Format("Bearer {0}", Configuration.OAuthToken.AccessToken));
 
@@ -213,36 +187,26 @@ namespace GlobalMiles.Pos.Controllers
 
         /// <summary>
         /// In order to cancel payment with miles you can use this API. It allows to cancel payment only related GSM and terminal ID numbers.
+        /// You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+        /// and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
         /// </summary>
-        /// <param name="accept">Required parameter: It advertises which content type is able to understand.</param>
-        /// <param name="contentType">Required parameter: It tells the client what the content type of the returned.</param>
-        /// <param name="authorization">Required parameter: It includes OAuth2 token.</param>
         /// <param name="body">Required parameter: The body of the request.</param>
         /// <return>Returns the Models.CancelBonusPaymentResponse response from the API call</return>
-        public Models.CancelBonusPaymentResponse CreateCancelBonusPayment(
-                string accept,
-                string contentType,
-                string authorization,
-                Models.CancelBonusPaymentRequest body)
+        public Models.CancelBonusPaymentResponse CreateCancelBonusPayment(Models.CancelBonusPaymentRequest body)
         {
-            Task<Models.CancelBonusPaymentResponse> t = CreateCancelBonusPaymentAsync(accept, contentType, authorization, body);
+            Task<Models.CancelBonusPaymentResponse> t = CreateCancelBonusPaymentAsync(body);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
         /// <summary>
         /// In order to cancel payment with miles you can use this API. It allows to cancel payment only related GSM and terminal ID numbers.
+        /// You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+        /// and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
         /// </summary>
-        /// <param name="accept">Required parameter: It advertises which content type is able to understand.</param>
-        /// <param name="contentType">Required parameter: It tells the client what the content type of the returned.</param>
-        /// <param name="authorization">Required parameter: It includes OAuth2 token.</param>
         /// <param name="body">Required parameter: The body of the request.</param>
         /// <return>Returns the Models.CancelBonusPaymentResponse response from the API call</return>
-        public async Task<Models.CancelBonusPaymentResponse> CreateCancelBonusPaymentAsync(
-                string accept,
-                string contentType,
-                string authorization,
-                Models.CancelBonusPaymentRequest body)
+        public async Task<Models.CancelBonusPaymentResponse> CreateCancelBonusPaymentAsync(Models.CancelBonusPaymentRequest body)
         {
             //Check if authentication token is set
             AuthManager.Instance.CheckAuthorization();
@@ -262,10 +226,7 @@ namespace GlobalMiles.Pos.Controllers
             {
                 { "user-agent", "APIMATIC 2.0" },
                 { "accept", "application/json" },
-                { "content-type", "application/json; charset=utf-8" },
-                { "Accept", accept },
-                { "Content-Type", contentType },
-                { "Authorization", authorization }
+                { "content-type", "application/json; charset=utf-8" }
             };
             _headers.Add("Authorization", string.Format("Bearer {0}", Configuration.OAuthToken.AccessToken));
 
@@ -293,36 +254,26 @@ namespace GlobalMiles.Pos.Controllers
 
         /// <summary>
         /// Before cancelling the payment with Miles this API is used to list the related sale.
+        /// You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+        /// and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
         /// </summary>
-        /// <param name="accept">Required parameter: It advertises which content type is able to understand.</param>
-        /// <param name="contentType">Required parameter: It tells the client what the content type of the returned.</param>
-        /// <param name="authorization">Required parameter: It includes OAuth2 token.</param>
         /// <param name="body">Required parameter: The body of the request.</param>
         /// <return>Returns the Models.GetBonusProvisionsResponse response from the API call</return>
-        public Models.GetBonusProvisionsResponse CreateGetBonusProvisions(
-                string accept,
-                string contentType,
-                string authorization,
-                Models.GetBonusProvisionsRequest body)
+        public Models.GetBonusProvisionsResponse CreateGetBonusProvisions(Models.GetBonusProvisionsRequest body)
         {
-            Task<Models.GetBonusProvisionsResponse> t = CreateGetBonusProvisionsAsync(accept, contentType, authorization, body);
+            Task<Models.GetBonusProvisionsResponse> t = CreateGetBonusProvisionsAsync(body);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
         /// <summary>
         /// Before cancelling the payment with Miles this API is used to list the related sale.
+        /// You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+        /// and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
         /// </summary>
-        /// <param name="accept">Required parameter: It advertises which content type is able to understand.</param>
-        /// <param name="contentType">Required parameter: It tells the client what the content type of the returned.</param>
-        /// <param name="authorization">Required parameter: It includes OAuth2 token.</param>
         /// <param name="body">Required parameter: The body of the request.</param>
         /// <return>Returns the Models.GetBonusProvisionsResponse response from the API call</return>
-        public async Task<Models.GetBonusProvisionsResponse> CreateGetBonusProvisionsAsync(
-                string accept,
-                string contentType,
-                string authorization,
-                Models.GetBonusProvisionsRequest body)
+        public async Task<Models.GetBonusProvisionsResponse> CreateGetBonusProvisionsAsync(Models.GetBonusProvisionsRequest body)
         {
             //Check if authentication token is set
             AuthManager.Instance.CheckAuthorization();
@@ -342,10 +293,7 @@ namespace GlobalMiles.Pos.Controllers
             {
                 { "user-agent", "APIMATIC 2.0" },
                 { "accept", "application/json" },
-                { "content-type", "application/json; charset=utf-8" },
-                { "Accept", accept },
-                { "Content-Type", contentType },
-                { "Authorization", authorization }
+                { "content-type", "application/json; charset=utf-8" }
             };
             _headers.Add("Authorization", string.Format("Bearer {0}", Configuration.OAuthToken.AccessToken));
 

@@ -22,7 +22,7 @@ namespace GlobalMiles.Pos.Models
     {
         // These fields hold the values for the public properties.
         private int totalReceiptAmount;
-        private int totalBonusAmount;
+        private int usedBonusAmount;
         private int recognitionId;
         private string oKCSicilNo;
 
@@ -44,19 +44,19 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// Total Bonus(Mile) Amount  that has been used in the shopping  ex:0.85 TL == 85
+        /// Used Bonus(Mile) Amount that has been used in the shopping  ex:0.85 TL == 85
         /// </summary>
-        [JsonProperty("totalBonusAmount")]
-        public int TotalBonusAmount 
+        [JsonProperty("usedBonusAmount")]
+        public int UsedBonusAmount 
         { 
             get 
             {
-                return this.totalBonusAmount; 
+                return this.usedBonusAmount; 
             } 
             set 
             {
-                this.totalBonusAmount = value;
-                onPropertyChanged("TotalBonusAmount");
+                this.usedBonusAmount = value;
+                onPropertyChanged("UsedBonusAmount");
             }
         }
 

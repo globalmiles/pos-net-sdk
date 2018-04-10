@@ -120,7 +120,7 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// session based İdentification Number .
+        /// Session based Identification Number .
         /// </summary>
         [JsonProperty("recognitionId")]
         public int RecognitionId 
@@ -137,7 +137,7 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// Eku no(Electronic Journal)
+        /// Eku no (Electronic Journal)
         /// </summary>
         [JsonProperty("EkuNo")]
         public int EkuNo 
@@ -171,7 +171,7 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// it should be  GGAAYYYYSSDD formated.
+        /// It should be  GGAAYYYYSSDD formatted.
         /// </summary>
         [JsonProperty("ReceiptDateTime")]
         public string ReceiptDateTime 
