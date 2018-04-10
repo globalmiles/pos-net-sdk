@@ -232,35 +232,28 @@ PaymentSystemsController paymentSystems = client.PaymentSystems;
 ### <a name="create_transaction_result"></a>![Method: ](https://apidocs.io/img/method.png "GlobalMiles.Pos.Controllers.PaymentSystemsController.CreateTransactionResult") CreateTransactionResult
 
 > After getting customer info by Get customer Info API and finished the shopping procedure in POS terminal, use this API to complete transaction.
+> 
+> You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+> and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
 
 
 ```csharp
-Task<Models.TransactionResultResponse> CreateTransactionResult(
-        string accept,
-        string contentType,
-        string authorization,
-        Models.TransactionResultRequest body)
+Task<Models.TransactionResultResponse> CreateTransactionResult(Models.TransactionResultRequest body)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| contentType |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```csharp
-string accept = "application/json";
-string contentType = "application/json";
-string authorization = "Authorization";
 var body = new Models.TransactionResultRequest();
 
-Models.TransactionResultResponse result = await paymentSystems.CreateTransactionResult(accept, contentType, authorization, body);
+Models.TransactionResultResponse result = await paymentSystems.CreateTransactionResult(body);
 
 ```
 
@@ -285,26 +278,22 @@ AuthenticationController authentication = client.Authentication;
 
 
 ```csharp
-Task<Models.OAuthResponse> CreateAuthentication(string accept, string contentType, Models.OAuthRequest body)
+Task<Models.OAuthResponse> CreateAuthentication(Models.OAuthRequest body)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| contentType |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```csharp
-string accept = "application/json";
-string contentType = "application/json";
 var body = new Models.OAuthRequest();
 
-Models.OAuthResponse result = await authentication.CreateAuthentication(accept, contentType, body);
+Models.OAuthResponse result = await authentication.CreateAuthentication(body);
 
 ```
 
@@ -324,35 +313,28 @@ CommonController common = client.Common;
 ### <a name="create_get_customer_info"></a>![Method: ](https://apidocs.io/img/method.png "GlobalMiles.Pos.Controllers.CommonController.CreateGetCustomerInfo") CreateGetCustomerInfo
 
 > This API will help you to retrieve customer's mil quantity and unique identifier value.Unique identifier value must be used by Transaction Result API in order to complete shopping.
+> 
+> You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+> and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
 
 
 ```csharp
-Task<Models.GetCustomerInfoResponse> CreateGetCustomerInfo(
-        string accept,
-        string contentType,
-        string authorization,
-        Models.GetCustomerInfoRequest body)
+Task<Models.GetCustomerInfoResponse> CreateGetCustomerInfo(Models.GetCustomerInfoRequest body)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| contentType |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```csharp
-string accept = "application/json";
-string contentType = "application/json";
-string authorization = "Authorization";
 var body = new Models.GetCustomerInfoRequest();
 
-Models.GetCustomerInfoResponse result = await common.CreateGetCustomerInfo(accept, contentType, authorization, body);
+Models.GetCustomerInfoResponse result = await common.CreateGetCustomerInfo(body);
 
 ```
 
@@ -372,72 +354,58 @@ BonusPaymentsController bonusPayments = client.BonusPayments;
 ### <a name="create_start_bonus_payment"></a>![Method: ](https://apidocs.io/img/method.png "GlobalMiles.Pos.Controllers.BonusPaymentsController.CreateStartBonusPayment") CreateStartBonusPayment
 
 > After getting customer info's and RecognitionID to start Payment with Miles Use this API.
-> After calling this API successfully OTP code send to cutomer GSM number. This OTP must be used with Complete API in order to complete sale.
+> After calling this API successfully OTP code send to customer GSM number. This OTP must be used with Complete API in order to complete sale.
+> 
+> You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+> and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
 
 
 ```csharp
-Task<Models.StartBonusPaymentResponse> CreateStartBonusPayment(
-        string accept,
-        string contentType,
-        string authorization,
-        Models.StartBonusPaymentRequest body)
+Task<Models.StartBonusPaymentResponse> CreateStartBonusPayment(Models.StartBonusPaymentRequest body)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| contentType |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```csharp
-string accept = "application/json";
-string contentType = "application/json";
-string authorization = "Authorization";
 var body = new Models.StartBonusPaymentRequest();
 
-Models.StartBonusPaymentResponse result = await bonusPayments.CreateStartBonusPayment(accept, contentType, authorization, body);
+Models.StartBonusPaymentResponse result = await bonusPayments.CreateStartBonusPayment(body);
 
 ```
 
 
 ### <a name="create_complete_bonus_payment"></a>![Method: ](https://apidocs.io/img/method.png "GlobalMiles.Pos.Controllers.BonusPaymentsController.CreateCompleteBonusPayment") CreateCompleteBonusPayment
 
-> In order to finalise payment with Miles use this API.Use the OTP number  which is send to user GSM on the Request body.
+> In order to finalize payment with Miles use this API. Use the OTP number  which is send to user GSM on the Request body.
+> 
+> You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+> and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
 
 
 ```csharp
-Task<Models.CompleteBonusPaymentResponse> CreateCompleteBonusPayment(
-        string accept,
-        string contentType,
-        string authorization,
-        Models.CompleteBonusPaymentRequest body)
+Task<Models.CompleteBonusPaymentResponse> CreateCompleteBonusPayment(Models.CompleteBonusPaymentRequest body)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| contentType |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```csharp
-string accept = "application/json";
-string contentType = "application/json";
-string authorization = "Authorization";
 var body = new Models.CompleteBonusPaymentRequest();
 
-Models.CompleteBonusPaymentResponse result = await bonusPayments.CreateCompleteBonusPayment(accept, contentType, authorization, body);
+Models.CompleteBonusPaymentResponse result = await bonusPayments.CreateCompleteBonusPayment(body);
 
 ```
 
@@ -445,35 +413,28 @@ Models.CompleteBonusPaymentResponse result = await bonusPayments.CreateCompleteB
 ### <a name="create_cancel_bonus_payment"></a>![Method: ](https://apidocs.io/img/method.png "GlobalMiles.Pos.Controllers.BonusPaymentsController.CreateCancelBonusPayment") CreateCancelBonusPayment
 
 > In order to cancel payment with miles you can use this API. It allows to cancel payment only related GSM and terminal ID numbers.
+> 
+> You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+> and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
 
 
 ```csharp
-Task<Models.CancelBonusPaymentResponse> CreateCancelBonusPayment(
-        string accept,
-        string contentType,
-        string authorization,
-        Models.CancelBonusPaymentRequest body)
+Task<Models.CancelBonusPaymentResponse> CreateCancelBonusPayment(Models.CancelBonusPaymentRequest body)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| contentType |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```csharp
-string accept = "application/json";
-string contentType = "application/json";
-string authorization = "Authorization";
 var body = new Models.CancelBonusPaymentRequest();
 
-Models.CancelBonusPaymentResponse result = await bonusPayments.CreateCancelBonusPayment(accept, contentType, authorization, body);
+Models.CancelBonusPaymentResponse result = await bonusPayments.CreateCancelBonusPayment(body);
 
 ```
 
@@ -481,35 +442,28 @@ Models.CancelBonusPaymentResponse result = await bonusPayments.CreateCancelBonus
 ### <a name="create_get_bonus_provisions"></a>![Method: ](https://apidocs.io/img/method.png "GlobalMiles.Pos.Controllers.BonusPaymentsController.CreateGetBonusProvisions") CreateGetBonusProvisions
 
 > Before cancelling the payment with Miles this API is used to list the related sale.
+> 
+> You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+> and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
 
 
 ```csharp
-Task<Models.GetBonusProvisionsResponse> CreateGetBonusProvisions(
-        string accept,
-        string contentType,
-        string authorization,
-        Models.GetBonusProvisionsRequest body)
+Task<Models.GetBonusProvisionsResponse> CreateGetBonusProvisions(Models.GetBonusProvisionsRequest body)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| contentType |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```csharp
-string accept = "application/json";
-string contentType = "application/json";
-string authorization = "Authorization";
 var body = new Models.GetBonusProvisionsRequest();
 
-Models.GetBonusProvisionsResponse result = await bonusPayments.CreateGetBonusProvisions(accept, contentType, authorization, body);
+Models.GetBonusProvisionsResponse result = await bonusPayments.CreateGetBonusProvisions(body);
 
 ```
 
@@ -518,4 +472,3 @@ Models.GetBonusProvisionsResponse result = await bonusPayments.CreateGetBonusPro
 
 
 
-# pos-net-sdk

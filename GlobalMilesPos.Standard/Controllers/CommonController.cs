@@ -51,36 +51,26 @@ namespace GlobalMiles.Pos.Controllers
 
         /// <summary>
         /// This API will help you to retrieve customer's mil quantity and unique identifier value.Unique identifier value must be used by Transaction Result API in order to complete shopping.
+        /// You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+        /// and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
         /// </summary>
-        /// <param name="accept">Required parameter: It advertises which content type is able to understand.</param>
-        /// <param name="contentType">Required parameter: It tells the client what the content type of the returned.</param>
-        /// <param name="authorization">Required parameter: It includes OAuth2 token.</param>
         /// <param name="body">Required parameter: The body of the request.</param>
         /// <return>Returns the Models.GetCustomerInfoResponse response from the API call</return>
-        public Models.GetCustomerInfoResponse CreateGetCustomerInfo(
-                string accept,
-                string contentType,
-                string authorization,
-                Models.GetCustomerInfoRequest body)
+        public Models.GetCustomerInfoResponse CreateGetCustomerInfo(Models.GetCustomerInfoRequest body)
         {
-            Task<Models.GetCustomerInfoResponse> t = CreateGetCustomerInfoAsync(accept, contentType, authorization, body);
+            Task<Models.GetCustomerInfoResponse> t = CreateGetCustomerInfoAsync(body);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
 
         /// <summary>
         /// This API will help you to retrieve customer's mil quantity and unique identifier value.Unique identifier value must be used by Transaction Result API in order to complete shopping.
+        /// You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
+        /// and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
         /// </summary>
-        /// <param name="accept">Required parameter: It advertises which content type is able to understand.</param>
-        /// <param name="contentType">Required parameter: It tells the client what the content type of the returned.</param>
-        /// <param name="authorization">Required parameter: It includes OAuth2 token.</param>
         /// <param name="body">Required parameter: The body of the request.</param>
         /// <return>Returns the Models.GetCustomerInfoResponse response from the API call</return>
-        public async Task<Models.GetCustomerInfoResponse> CreateGetCustomerInfoAsync(
-                string accept,
-                string contentType,
-                string authorization,
-                Models.GetCustomerInfoRequest body)
+        public async Task<Models.GetCustomerInfoResponse> CreateGetCustomerInfoAsync(Models.GetCustomerInfoRequest body)
         {
             //Check if authentication token is set
             AuthManager.Instance.CheckAuthorization();
@@ -100,10 +90,7 @@ namespace GlobalMiles.Pos.Controllers
             {
                 { "user-agent", "APIMATIC 2.0" },
                 { "accept", "application/json" },
-                { "content-type", "application/json; charset=utf-8" },
-                { "Accept", accept },
-                { "Content-Type", contentType },
-                { "Authorization", authorization }
+                { "content-type", "application/json; charset=utf-8" }
             };
             _headers.Add("Authorization", string.Format("Bearer {0}", Configuration.OAuthToken.AccessToken));
 

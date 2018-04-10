@@ -52,13 +52,11 @@ namespace GlobalMiles.Pos.Controllers
         /// <summary>
         /// An access token will allow you to make requests for the system. We support only one type of token: client_credentials
         /// </summary>
-        /// <param name="accept">Required parameter: It advertises which content type is able to understand.</param>
-        /// <param name="contentType">Required parameter: It tells the client what the content type of the returned.</param>
         /// <param name="body">Required parameter: The body of the request.</param>
         /// <return>Returns the Models.OAuthResponse response from the API call</return>
-        public Models.OAuthResponse CreateAuthentication(string accept, string contentType, Models.OAuthRequest body)
+        public Models.OAuthResponse CreateAuthentication(Models.OAuthRequest body)
         {
-            Task<Models.OAuthResponse> t = CreateAuthenticationAsync(accept, contentType, body);
+            Task<Models.OAuthResponse> t = CreateAuthenticationAsync(body);
             APIHelper.RunTaskSynchronously(t);
             return t.Result;
         }
@@ -66,11 +64,9 @@ namespace GlobalMiles.Pos.Controllers
         /// <summary>
         /// An access token will allow you to make requests for the system. We support only one type of token: client_credentials
         /// </summary>
-        /// <param name="accept">Required parameter: It advertises which content type is able to understand.</param>
-        /// <param name="contentType">Required parameter: It tells the client what the content type of the returned.</param>
         /// <param name="body">Required parameter: The body of the request.</param>
         /// <return>Returns the Models.OAuthResponse response from the API call</return>
-        public async Task<Models.OAuthResponse> CreateAuthenticationAsync(string accept, string contentType, Models.OAuthRequest body)
+        public async Task<Models.OAuthResponse> CreateAuthenticationAsync(Models.OAuthRequest body)
         {
             //the base uri for api requests
             string _baseUri = Configuration.GetBaseURI();
@@ -88,9 +84,7 @@ namespace GlobalMiles.Pos.Controllers
             {
                 { "user-agent", "APIMATIC 2.0" },
                 { "accept", "application/json" },
-                { "content-type", "application/json; charset=utf-8" },
-                { "Accept", accept },
-                { "Content-Type", contentType }
+                { "content-type", "application/json; charset=utf-8" }
             };
 
             //append body params
