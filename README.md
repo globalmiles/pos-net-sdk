@@ -214,24 +214,24 @@ namespace OAuthTestApplication
 
 ## <a name="list_of_controllers"></a>List of Controllers
 
-* [PaymentSystemsController](#payment_systems_controller)
+* [EarnMilesController](#earn_miles_controller)
 * [AuthenticationController](#authentication_controller)
 * [CommonController](#common_controller)
-* [BonusPaymentsController](#bonus_payments_controller)
+* [PayWithMilesController](#pay_with_miles_controller)
 
-## <a name="payment_systems_controller"></a>![Class: ](https://apidocs.io/img/class.png "GlobalMiles.Pos.Controllers.PaymentSystemsController") PaymentSystemsController
+## <a name="earn_miles_controller"></a>![Class: ](https://apidocs.io/img/class.png "GlobalMiles.Pos.Controllers.EarnMilesController") EarnMilesController
 
 ### Get singleton instance
 
-The singleton instance of the ``` PaymentSystemsController ``` class can be accessed from the API Client.
+The singleton instance of the ``` EarnMilesController ``` class can be accessed from the API Client.
 
 ```csharp
-PaymentSystemsController paymentSystems = client.PaymentSystems;
+EarnMilesController earnMiles = client.EarnMiles;
 ```
 
-### <a name="create_transaction_result"></a>![Method: ](https://apidocs.io/img/method.png "GlobalMiles.Pos.Controllers.PaymentSystemsController.CreateTransactionResult") CreateTransactionResult
+### <a name="create_transaction_result"></a>![Method: ](https://apidocs.io/img/method.png "GlobalMiles.Pos.Controllers.EarnMilesController.CreateTransactionResult") CreateTransactionResult
 
-> After getting customer info by Get customer Info API and finished the shopping procedure in POS terminal, use this API to complete transaction.
+> After getting customer info by Get Customer Info endpoint and finished the shopping procedure in POS terminal, use this endpoint to complete transaction.
 > 
 > You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
 > and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
@@ -253,7 +253,7 @@ Task<Models.TransactionResultResponse> CreateTransactionResult(Models.Transactio
 ```csharp
 var body = new Models.TransactionResultRequest();
 
-Models.TransactionResultResponse result = await paymentSystems.CreateTransactionResult(body);
+Models.TransactionResultResponse result = await earnMiles.CreateTransactionResult(body);
 
 ```
 
@@ -312,7 +312,7 @@ CommonController common = client.Common;
 
 ### <a name="create_get_customer_info"></a>![Method: ](https://apidocs.io/img/method.png "GlobalMiles.Pos.Controllers.CommonController.CreateGetCustomerInfo") CreateGetCustomerInfo
 
-> This API will help you to retrieve customer's mil quantity and unique identifier value.Unique identifier value must be used by Transaction Result API in order to complete shopping.
+> This API will help you to get customer's mil quantity and unique identifier value. Unique identifier value must be used by Transaction Result API in order to complete shopping.
 > 
 > You can try this API with configuring client parameters in Console Tab below. Test OAuthClientId is 552698b91cae424b9b3ddee14eea6faf564f1b5fb7764854b73b2763e0e68c66
 > and OAuthClientSecret is d0a8b00a3d754ea5a013465bcc23f6efa89e9dfb080a4f4eb460e3306653d92b
@@ -341,17 +341,17 @@ Models.GetCustomerInfoResponse result = await common.CreateGetCustomerInfo(body)
 
 [Back to List of Controllers](#list_of_controllers)
 
-## <a name="bonus_payments_controller"></a>![Class: ](https://apidocs.io/img/class.png "GlobalMiles.Pos.Controllers.BonusPaymentsController") BonusPaymentsController
+## <a name="pay_with_miles_controller"></a>![Class: ](https://apidocs.io/img/class.png "GlobalMiles.Pos.Controllers.PayWithMilesController") PayWithMilesController
 
 ### Get singleton instance
 
-The singleton instance of the ``` BonusPaymentsController ``` class can be accessed from the API Client.
+The singleton instance of the ``` PayWithMilesController ``` class can be accessed from the API Client.
 
 ```csharp
-BonusPaymentsController bonusPayments = client.BonusPayments;
+PayWithMilesController payWithMiles = client.PayWithMiles;
 ```
 
-### <a name="create_start_bonus_payment"></a>![Method: ](https://apidocs.io/img/method.png "GlobalMiles.Pos.Controllers.BonusPaymentsController.CreateStartBonusPayment") CreateStartBonusPayment
+### <a name="create_start_mile_payment"></a>![Method: ](https://apidocs.io/img/method.png "GlobalMiles.Pos.Controllers.PayWithMilesController.CreateStartMilePayment") CreateStartMilePayment
 
 > After getting customer info's and RecognitionID to start Payment with Miles Use this API.
 > After calling this API successfully OTP code send to customer GSM number. This OTP must be used with Complete API in order to complete sale.
@@ -361,7 +361,7 @@ BonusPaymentsController bonusPayments = client.BonusPayments;
 
 
 ```csharp
-Task<Models.StartBonusPaymentResponse> CreateStartBonusPayment(Models.StartBonusPaymentRequest body)
+Task<Models.StartMilePaymentResponse> CreateStartMilePayment(Models.StartMilePaymentRequest body)
 ```
 
 #### Parameters
@@ -374,14 +374,14 @@ Task<Models.StartBonusPaymentResponse> CreateStartBonusPayment(Models.StartBonus
 #### Example Usage
 
 ```csharp
-var body = new Models.StartBonusPaymentRequest();
+var body = new Models.StartMilePaymentRequest();
 
-Models.StartBonusPaymentResponse result = await bonusPayments.CreateStartBonusPayment(body);
+Models.StartMilePaymentResponse result = await payWithMiles.CreateStartMilePayment(body);
 
 ```
 
 
-### <a name="create_complete_bonus_payment"></a>![Method: ](https://apidocs.io/img/method.png "GlobalMiles.Pos.Controllers.BonusPaymentsController.CreateCompleteBonusPayment") CreateCompleteBonusPayment
+### <a name="create_complete_mile_payment"></a>![Method: ](https://apidocs.io/img/method.png "GlobalMiles.Pos.Controllers.PayWithMilesController.CreateCompleteMilePayment") CreateCompleteMilePayment
 
 > In order to finalize payment with Miles use this API. Use the OTP number  which is send to user GSM on the Request body.
 > 
@@ -390,7 +390,7 @@ Models.StartBonusPaymentResponse result = await bonusPayments.CreateStartBonusPa
 
 
 ```csharp
-Task<Models.CompleteBonusPaymentResponse> CreateCompleteBonusPayment(Models.CompleteBonusPaymentRequest body)
+Task<Models.CompleteMilePaymentResponse> CreateCompleteMilePayment(Models.CompleteMilePaymentRequest body)
 ```
 
 #### Parameters
@@ -403,14 +403,14 @@ Task<Models.CompleteBonusPaymentResponse> CreateCompleteBonusPayment(Models.Comp
 #### Example Usage
 
 ```csharp
-var body = new Models.CompleteBonusPaymentRequest();
+var body = new Models.CompleteMilePaymentRequest();
 
-Models.CompleteBonusPaymentResponse result = await bonusPayments.CreateCompleteBonusPayment(body);
+Models.CompleteMilePaymentResponse result = await payWithMiles.CreateCompleteMilePayment(body);
 
 ```
 
 
-### <a name="create_cancel_bonus_payment"></a>![Method: ](https://apidocs.io/img/method.png "GlobalMiles.Pos.Controllers.BonusPaymentsController.CreateCancelBonusPayment") CreateCancelBonusPayment
+### <a name="create_cancel_mile_payment"></a>![Method: ](https://apidocs.io/img/method.png "GlobalMiles.Pos.Controllers.PayWithMilesController.CreateCancelMilePayment") CreateCancelMilePayment
 
 > In order to cancel payment with miles you can use this API. It allows to cancel payment only related GSM and terminal ID numbers.
 > 
@@ -419,7 +419,7 @@ Models.CompleteBonusPaymentResponse result = await bonusPayments.CreateCompleteB
 
 
 ```csharp
-Task<Models.CancelBonusPaymentResponse> CreateCancelBonusPayment(Models.CancelBonusPaymentRequest body)
+Task<Models.CancelMilePaymentResponse> CreateCancelMilePayment(Models.CancelMilePaymentRequest body)
 ```
 
 #### Parameters
@@ -432,14 +432,14 @@ Task<Models.CancelBonusPaymentResponse> CreateCancelBonusPayment(Models.CancelBo
 #### Example Usage
 
 ```csharp
-var body = new Models.CancelBonusPaymentRequest();
+var body = new Models.CancelMilePaymentRequest();
 
-Models.CancelBonusPaymentResponse result = await bonusPayments.CreateCancelBonusPayment(body);
+Models.CancelMilePaymentResponse result = await payWithMiles.CreateCancelMilePayment(body);
 
 ```
 
 
-### <a name="create_get_bonus_provisions"></a>![Method: ](https://apidocs.io/img/method.png "GlobalMiles.Pos.Controllers.BonusPaymentsController.CreateGetBonusProvisions") CreateGetBonusProvisions
+### <a name="create_get_mile_provisions"></a>![Method: ](https://apidocs.io/img/method.png "GlobalMiles.Pos.Controllers.PayWithMilesController.CreateGetMileProvisions") CreateGetMileProvisions
 
 > Before cancelling the payment with Miles this API is used to list the related sale.
 > 
@@ -448,7 +448,7 @@ Models.CancelBonusPaymentResponse result = await bonusPayments.CreateCancelBonus
 
 
 ```csharp
-Task<Models.GetBonusProvisionsResponse> CreateGetBonusProvisions(Models.GetBonusProvisionsRequest body)
+Task<Models.GetBonusProvisionsResponse> CreateGetMileProvisions(Models.GetMileProvisionsRequest body)
 ```
 
 #### Parameters
@@ -461,9 +461,9 @@ Task<Models.GetBonusProvisionsResponse> CreateGetBonusProvisions(Models.GetBonus
 #### Example Usage
 
 ```csharp
-var body = new Models.GetBonusProvisionsRequest();
+var body = new Models.GetMileProvisionsRequest();
 
-Models.GetBonusProvisionsResponse result = await bonusPayments.CreateGetBonusProvisions(body);
+Models.GetBonusProvisionsResponse result = await payWithMiles.CreateGetMileProvisions(body);
 
 ```
 

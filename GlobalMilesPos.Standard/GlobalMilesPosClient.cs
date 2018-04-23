@@ -14,13 +14,13 @@ namespace GlobalMiles.Pos
     {
 
         /// <summary>
-        /// Singleton access to PaymentSystems controller
+        /// Singleton access to EarnMiles controller
         /// </summary>
-        public PaymentSystemsController PaymentSystems
+        public EarnMilesController EarnMiles
         {
             get
             {
-                return PaymentSystemsController.Instance;
+                return EarnMilesController.Instance;
             }
         }
 
@@ -47,13 +47,13 @@ namespace GlobalMiles.Pos
         }
 
         /// <summary>
-        /// Singleton access to BonusPayments controller
+        /// Singleton access to PayWithMiles controller
         /// </summary>
-        public BonusPaymentsController BonusPayments
+        public PayWithMilesController PayWithMiles
         {
             get
             {
-                return BonusPaymentsController.Instance;
+                return PayWithMilesController.Instance;
             }
         }
 

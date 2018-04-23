@@ -18,12 +18,13 @@ using GlobalMiles.Pos.Utilities;
 
 namespace GlobalMiles.Pos.Models
 {
-    public class GetBonusProvisionsResponse : BaseModel 
+    public class StartMilePaymentResponse : BaseModel 
     {
         // These fields hold the values for the public properties.
         private int returnCode;
         private string returnDesc;
-        private List<Models.MileProvision> bonusProvisions;
+        private string bonusPaymentProvisionId;
+        private bool oTPNeeded;
 
         /// <summary>
         /// 0  Success, 1 and bigger than 1 unsuccessful
@@ -60,19 +61,36 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// Provision ID for the payment
         /// </summary>
-        [JsonProperty("bonusProvisions")]
-        public List<Models.MileProvision> BonusProvisions 
+        [JsonProperty("bonusPaymentProvisionId")]
+        public string BonusPaymentProvisionId 
         { 
             get 
             {
-                return this.bonusProvisions; 
+                return this.bonusPaymentProvisionId; 
             } 
             set 
             {
-                this.bonusProvisions = value;
-                onPropertyChanged("BonusProvisions");
+                this.bonusPaymentProvisionId = value;
+                onPropertyChanged("BonusPaymentProvisionId");
+            }
+        }
+
+        /// <summary>
+        /// Is a one-time password required?
+        /// </summary>
+        [JsonProperty("OTPNeeded")]
+        public bool OTPNeeded 
+        { 
+            get 
+            {
+                return this.oTPNeeded; 
+            } 
+            set 
+            {
+                this.oTPNeeded = value;
+                onPropertyChanged("OTPNeeded");
             }
         }
     }

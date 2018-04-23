@@ -18,80 +18,62 @@ using GlobalMiles.Pos.Utilities;
 
 namespace GlobalMiles.Pos.Models
 {
-    public class GetCustomerInfoRequest : BaseModel 
+    public class StartMilePaymentRequest : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string readCode;
-        private int readCodeType;
-        private int totalAmount;
-        private int totalVATAmount;
+        private int totalReceiptAmount;
+        private int usedBonusAmount;
+        private int recognitionId;
         private string oKCSicilNo;
 
         /// <summary>
-        /// Customer Identification Method ; GSM NO, Customer Unique ID or CODE
+        /// Total Receipt Amount  ex:12.35 TL == 1235
         /// </summary>
-        [JsonProperty("readCode")]
-        public string ReadCode 
+        [JsonProperty("totalReceiptAmount")]
+        public int TotalReceiptAmount 
         { 
             get 
             {
-                return this.readCode; 
+                return this.totalReceiptAmount; 
             } 
             set 
             {
-                this.readCode = value;
-                onPropertyChanged("ReadCode");
+                this.totalReceiptAmount = value;
+                onPropertyChanged("TotalReceiptAmount");
             }
         }
 
         /// <summary>
-        /// 1: GSM NO, 2: Customer unique identifier, 3: CODE
+        /// Used Amount that has been used in the shopping  ex:0.85 TL == 85
         /// </summary>
-        [JsonProperty("readCodeType")]
-        public int ReadCodeType 
+        [JsonProperty("usedBonusAmount")]
+        public int UsedBonusAmount 
         { 
             get 
             {
-                return this.readCodeType; 
+                return this.usedBonusAmount; 
             } 
             set 
             {
-                this.readCodeType = value;
-                onPropertyChanged("ReadCodeType");
+                this.usedBonusAmount = value;
+                onPropertyChanged("UsedBonusAmount");
             }
         }
 
         /// <summary>
-        /// Total receipt amount.  ex:12.34 USD == 1234
+        /// Session based user identification number
         /// </summary>
-        [JsonProperty("totalAmount")]
-        public int TotalAmount 
+        [JsonProperty("recognitionId")]
+        public int RecognitionId 
         { 
             get 
             {
-                return this.totalAmount; 
+                return this.recognitionId; 
             } 
             set 
             {
-                this.totalAmount = value;
-                onPropertyChanged("TotalAmount");
-            }
-        }
-
-        /// <summary>
-        /// Total Tax Value. EX:1.34 USD == 134
-        /// </summary>
-        [JsonProperty("totalVATAmount")]
-        public int TotalVATAmount 
-        { 
-            get 
-            {
-                return this.totalVATAmount; 
-            } 
-            set 
-            {
-                this.totalVATAmount = value;
-                onPropertyChanged("TotalVATAmount");
+                this.recognitionId = value;
+                onPropertyChanged("RecognitionId");
             }
         }
 

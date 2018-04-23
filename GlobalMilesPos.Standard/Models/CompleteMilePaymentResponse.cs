@@ -18,12 +18,11 @@ using GlobalMiles.Pos.Utilities;
 
 namespace GlobalMiles.Pos.Models
 {
-    public class GetBonusProvisionsResponse : BaseModel 
+    public class CompleteMilePaymentResponse : BaseModel 
     {
         // These fields hold the values for the public properties.
         private int returnCode;
         private string returnDesc;
-        private List<Models.MileProvision> bonusProvisions;
 
         /// <summary>
         /// 0  Success, 1 and bigger than 1 unsuccessful
@@ -56,23 +55,6 @@ namespace GlobalMiles.Pos.Models
             {
                 this.returnDesc = value;
                 onPropertyChanged("ReturnDesc");
-            }
-        }
-
-        /// <summary>
-        /// TODO: Write general description for this method
-        /// </summary>
-        [JsonProperty("bonusProvisions")]
-        public List<Models.MileProvision> BonusProvisions 
-        { 
-            get 
-            {
-                return this.bonusProvisions; 
-            } 
-            set 
-            {
-                this.bonusProvisions = value;
-                onPropertyChanged("BonusProvisions");
             }
         }
     }
