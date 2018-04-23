@@ -18,61 +18,61 @@ using GlobalMiles.Pos.Utilities;
 
 namespace GlobalMiles.Pos.Models
 {
-    public class GetBonusProvisionsResponse : BaseModel 
+    public class CompleteMilePaymentRequest : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private int returnCode;
-        private string returnDesc;
-        private List<Models.MileProvision> bonusProvisions;
+        private string bonusPaymentProvisionId;
+        private string oKCSicilNo;
+        private string oTP;
 
         /// <summary>
-        /// 0  Success, 1 and bigger than 1 unsuccessful
+        /// Provision ID
         /// </summary>
-        [JsonProperty("returnCode")]
-        public int ReturnCode 
+        [JsonProperty("bonusPaymentProvisionId")]
+        public string BonusPaymentProvisionId 
         { 
             get 
             {
-                return this.returnCode; 
+                return this.bonusPaymentProvisionId; 
             } 
             set 
             {
-                this.returnCode = value;
-                onPropertyChanged("ReturnCode");
+                this.bonusPaymentProvisionId = value;
+                onPropertyChanged("BonusPaymentProvisionId");
             }
         }
 
         /// <summary>
-        /// if success return is empty. if unsuccessful it returns error message
+        /// Terminal code.
         /// </summary>
-        [JsonProperty("returnDesc")]
-        public string ReturnDesc 
+        [JsonProperty("OKCSicilNo")]
+        public string OKCSicilNo 
         { 
             get 
             {
-                return this.returnDesc; 
+                return this.oKCSicilNo; 
             } 
             set 
             {
-                this.returnDesc = value;
-                onPropertyChanged("ReturnDesc");
+                this.oKCSicilNo = value;
+                onPropertyChanged("OKCSicilNo");
             }
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// One time password that sends to customer phone
         /// </summary>
-        [JsonProperty("bonusProvisions")]
-        public List<Models.MileProvision> BonusProvisions 
+        [JsonProperty("OTP")]
+        public string OTP 
         { 
             get 
             {
-                return this.bonusProvisions; 
+                return this.oTP; 
             } 
             set 
             {
-                this.bonusProvisions = value;
-                onPropertyChanged("BonusProvisions");
+                this.oTP = value;
+                onPropertyChanged("OTP");
             }
         }
     }

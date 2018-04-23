@@ -18,61 +18,61 @@ using GlobalMiles.Pos.Utilities;
 
 namespace GlobalMiles.Pos.Models
 {
-    public class GetBonusProvisionsResponse : BaseModel 
+    public class GetMileProvisionsRequest : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private int returnCode;
-        private string returnDesc;
-        private List<Models.MileProvision> bonusProvisions;
+        private string readCode;
+        private string readCodeType;
+        private string oKCSicilNo;
 
         /// <summary>
-        /// 0  Success, 1 and bigger than 1 unsuccessful
+        /// Customer Identification Method ; GSM NO, Customer Unique ID or CODE
         /// </summary>
-        [JsonProperty("returnCode")]
-        public int ReturnCode 
+        [JsonProperty("readCode")]
+        public string ReadCode 
         { 
             get 
             {
-                return this.returnCode; 
+                return this.readCode; 
             } 
             set 
             {
-                this.returnCode = value;
-                onPropertyChanged("ReturnCode");
+                this.readCode = value;
+                onPropertyChanged("ReadCode");
             }
         }
 
         /// <summary>
-        /// if success return is empty. if unsuccessful it returns error message
+        /// 1: GSM NO, 2: Customer unique identifier, 3: CODE
         /// </summary>
-        [JsonProperty("returnDesc")]
-        public string ReturnDesc 
+        [JsonProperty("readCodeType")]
+        public string ReadCodeType 
         { 
             get 
             {
-                return this.returnDesc; 
+                return this.readCodeType; 
             } 
             set 
             {
-                this.returnDesc = value;
-                onPropertyChanged("ReturnDesc");
+                this.readCodeType = value;
+                onPropertyChanged("ReadCodeType");
             }
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// Terminal code.
         /// </summary>
-        [JsonProperty("bonusProvisions")]
-        public List<Models.MileProvision> BonusProvisions 
+        [JsonProperty("OKCSicilNo")]
+        public string OKCSicilNo 
         { 
             get 
             {
-                return this.bonusProvisions; 
+                return this.oKCSicilNo; 
             } 
             set 
             {
-                this.bonusProvisions = value;
-                onPropertyChanged("BonusProvisions");
+                this.oKCSicilNo = value;
+                onPropertyChanged("OKCSicilNo");
             }
         }
     }

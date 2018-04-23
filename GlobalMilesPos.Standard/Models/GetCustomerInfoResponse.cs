@@ -28,7 +28,7 @@ namespace GlobalMiles.Pos.Models
         private int loyaltyDiscountedPrice;
 
         /// <summary>
-        /// 0 ise başarılı, 1 veya daha büyük ise başarısız
+        /// 0  Success, 1 and bigger than 1 unsuccessful
         /// </summary>
         [JsonProperty("returnCode")]
         public int ReturnCode 
@@ -45,7 +45,7 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// Başarılı ise boş, eğer hata varsa; hata mesajını içerir.
+        /// if success return is empty. if unsuccessful it returns error message
         /// </summary>
         [JsonProperty("returnDesc")]
         public string ReturnDesc 
@@ -62,7 +62,7 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// Kullanıcının GlobalMiles sistemindeki unique identifier değeri
+        /// Session based user identification number
         /// </summary>
         [JsonProperty("recognitionId")]
         public int RecognitionId 
@@ -79,7 +79,7 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// Müşterinin bu işlemde kullanabileceği puanın TL karşılığıdır. Son iki karakter kuruşları temsil eder. Örneğin: 12.56 TL == 1256
+        /// The available points that the customer can use in this transaction is in USD which is calculated from customer's current miles. EX: 12.56 USD == 1256
         /// </summary>
         [JsonProperty("availablePoint")]
         public int AvailablePoint 
@@ -96,7 +96,7 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// Sadakat indirimi. Son iki karakter kuruşları temsil eder. Örneğin: 90.50 TL == 9050
+        /// Loyalty discounted price ex: 90.50 USD == 9050
         /// </summary>
         [JsonProperty("loyaltyDiscountedPrice")]
         public int LoyaltyDiscountedPrice 
