@@ -21,24 +21,28 @@ namespace GlobalMiles.Pos.Models
     public class TransactionResultRequest : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private int totalReceiptAmount;
-        private int totalVATAmount;
-        private string oKCSicilNo;
-        private int receiptNo;
-        private int zno;
+        private double totalReceiptAmount;
+        private double totalVatAmount;
+        private string currency;
+        private int partnerId;
+        private int branchId;
+        private string terminalId;
+        private string receiptNumber;
+        private string extraNumber1;
+        private string extraNumber2;
         private int recognitionId;
-        private int ekuNo;
         private string receiptType;
         private string receiptDateTime;
         private Models.Invoice invoiceInfo;
         private List<Models.Payment> payments;
         private List<Models.Discount> discounts;
+        private string extraData;
 
         /// <summary>
-        /// Total Receipt Amount  ex:12.35 TL == 1235
+        /// Total receipt amount.
         /// </summary>
-        [JsonProperty("totalReceiptAmount")]
-        public int TotalReceiptAmount 
+        [JsonProperty("total_receipt_amount")]
+        public double TotalReceiptAmount 
         { 
             get 
             {
@@ -52,77 +56,145 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// Total VAT Amount  ex: 0.85 TL == 85
+        /// Total tax amount.
         /// </summary>
-        [JsonProperty("totalVATAmount")]
-        public int TotalVATAmount 
+        [JsonProperty("total_vat_amount")]
+        public double TotalVatAmount 
         { 
             get 
             {
-                return this.totalVATAmount; 
+                return this.totalVatAmount; 
             } 
             set 
             {
-                this.totalVATAmount = value;
-                onPropertyChanged("TotalVATAmount");
+                this.totalVatAmount = value;
+                onPropertyChanged("TotalVatAmount");
             }
         }
 
         /// <summary>
-        /// Terminal code.
+        /// ISO-4217 3-letter currency code.
         /// </summary>
-        [JsonProperty("OKCSicilNo")]
-        public string OKCSicilNo 
+        [JsonProperty("currency")]
+        public string Currency 
         { 
             get 
             {
-                return this.oKCSicilNo; 
+                return this.currency; 
             } 
             set 
             {
-                this.oKCSicilNo = value;
-                onPropertyChanged("OKCSicilNo");
+                this.currency = value;
+                onPropertyChanged("Currency");
             }
         }
 
         /// <summary>
-        /// ReceiptNo
+        /// Partner ID.
         /// </summary>
-        [JsonProperty("ReceiptNo")]
-        public int ReceiptNo 
+        [JsonProperty("partner_id")]
+        public int PartnerId 
         { 
             get 
             {
-                return this.receiptNo; 
+                return this.partnerId; 
             } 
             set 
             {
-                this.receiptNo = value;
-                onPropertyChanged("ReceiptNo");
+                this.partnerId = value;
+                onPropertyChanged("PartnerId");
             }
         }
 
         /// <summary>
-        /// Z no
+        /// Branch ID.
         /// </summary>
-        [JsonProperty("Zno")]
-        public int Zno 
+        [JsonProperty("branch_id")]
+        public int BranchId 
         { 
             get 
             {
-                return this.zno; 
+                return this.branchId; 
             } 
             set 
             {
-                this.zno = value;
-                onPropertyChanged("Zno");
+                this.branchId = value;
+                onPropertyChanged("BranchId");
             }
         }
 
         /// <summary>
-        /// Session based Identification Number .
+        /// Terminal ID.
         /// </summary>
-        [JsonProperty("recognitionId")]
+        [JsonProperty("terminal_id")]
+        public string TerminalId 
+        { 
+            get 
+            {
+                return this.terminalId; 
+            } 
+            set 
+            {
+                this.terminalId = value;
+                onPropertyChanged("TerminalId");
+            }
+        }
+
+        /// <summary>
+        /// Receipt number.
+        /// </summary>
+        [JsonProperty("receipt_number")]
+        public string ReceiptNumber 
+        { 
+            get 
+            {
+                return this.receiptNumber; 
+            } 
+            set 
+            {
+                this.receiptNumber = value;
+                onPropertyChanged("ReceiptNumber");
+            }
+        }
+
+        /// <summary>
+        /// Extra number 1.
+        /// </summary>
+        [JsonProperty("extra_number_1")]
+        public string ExtraNumber1 
+        { 
+            get 
+            {
+                return this.extraNumber1; 
+            } 
+            set 
+            {
+                this.extraNumber1 = value;
+                onPropertyChanged("ExtraNumber1");
+            }
+        }
+
+        /// <summary>
+        /// Extra number 2.
+        /// </summary>
+        [JsonProperty("extra_number_2")]
+        public string ExtraNumber2 
+        { 
+            get 
+            {
+                return this.extraNumber2; 
+            } 
+            set 
+            {
+                this.extraNumber2 = value;
+                onPropertyChanged("ExtraNumber2");
+            }
+        }
+
+        /// <summary>
+        /// Session based identification number.
+        /// </summary>
+        [JsonProperty("recognition_id")]
         public int RecognitionId 
         { 
             get 
@@ -137,26 +209,9 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// Eku no (Electronic Journal)
+        /// Receipt type (Invoice , Food ..)
         /// </summary>
-        [JsonProperty("EkuNo")]
-        public int EkuNo 
-        { 
-            get 
-            {
-                return this.ekuNo; 
-            } 
-            set 
-            {
-                this.ekuNo = value;
-                onPropertyChanged("EkuNo");
-            }
-        }
-
-        /// <summary>
-        /// Receipt Type (Invoice , Food ..)
-        /// </summary>
-        [JsonProperty("ReceiptType")]
+        [JsonProperty("receipt_type")]
         public string ReceiptType 
         { 
             get 
@@ -171,9 +226,9 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// It should be  GGAAYYYYSSDD formatted.
+        /// It should be DDMMYYYYHHMM formatted.
         /// </summary>
-        [JsonProperty("ReceiptDateTime")]
+        [JsonProperty("receipt_date_time")]
         public string ReceiptDateTime 
         { 
             get 
@@ -188,9 +243,9 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// Invoice detail info
+        /// Invoice details.
         /// </summary>
-        [JsonProperty("InvoiceInfo")]
+        [JsonProperty("invoice_info")]
         public Models.Invoice InvoiceInfo 
         { 
             get 
@@ -205,9 +260,9 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// Payment Detail Block
+        /// Payment details.
         /// </summary>
-        [JsonProperty("Payments")]
+        [JsonProperty("payments")]
         public List<Models.Payment> Payments 
         { 
             get 
@@ -222,9 +277,9 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// Discount details.
         /// </summary>
-        [JsonProperty("Discounts")]
+        [JsonProperty("discounts")]
         public List<Models.Discount> Discounts 
         { 
             get 
@@ -235,6 +290,23 @@ namespace GlobalMiles.Pos.Models
             {
                 this.discounts = value;
                 onPropertyChanged("Discounts");
+            }
+        }
+
+        /// <summary>
+        /// Extra data.
+        /// </summary>
+        [JsonProperty("extra_data")]
+        public string ExtraData 
+        { 
+            get 
+            {
+                return this.extraData; 
+            } 
+            set 
+            {
+                this.extraData = value;
+                onPropertyChanged("ExtraData");
             }
         }
     }

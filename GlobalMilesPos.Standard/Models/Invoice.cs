@@ -22,13 +22,13 @@ namespace GlobalMiles.Pos.Models
     {
         // These fields hold the values for the public properties.
         private string invoiceType;
-        private string invoiceNo;
+        private string invoiceNumber;
         private string invoiceDate;
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// Type of the invoice.
         /// </summary>
-        [JsonProperty("invoiceType")]
+        [JsonProperty("invoice_type")]
         public string InvoiceType 
         { 
             get 
@@ -43,26 +43,26 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// Number of the invoice.
         /// </summary>
-        [JsonProperty("invoiceNo")]
-        public string InvoiceNo 
+        [JsonProperty("invoice_number")]
+        public string InvoiceNumber 
         { 
             get 
             {
-                return this.invoiceNo; 
+                return this.invoiceNumber; 
             } 
             set 
             {
-                this.invoiceNo = value;
-                onPropertyChanged("InvoiceNo");
+                this.invoiceNumber = value;
+                onPropertyChanged("InvoiceNumber");
             }
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// Date of the invoice.
         /// </summary>
-        [JsonProperty("invoiceDate")]
+        [JsonProperty("invoice_date")]
         public string InvoiceDate 
         { 
             get 

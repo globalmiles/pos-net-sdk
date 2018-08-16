@@ -14,13 +14,13 @@ namespace GlobalMiles.Pos
     {
 
         /// <summary>
-        /// Singleton access to EarnMiles controller
+        /// Singleton access to PayWithMiles controller
         /// </summary>
-        public EarnMilesController EarnMiles
+        public PayWithMilesController PayWithMiles
         {
             get
             {
-                return EarnMilesController.Instance;
+                return PayWithMilesController.Instance;
             }
         }
 
@@ -36,6 +36,17 @@ namespace GlobalMiles.Pos
         }
 
         /// <summary>
+        /// Singleton access to EarnMiles controller
+        /// </summary>
+        public EarnMilesController EarnMiles
+        {
+            get
+            {
+                return EarnMilesController.Instance;
+            }
+        }
+
+        /// <summary>
         /// Singleton access to Common controller
         /// </summary>
         public CommonController Common
@@ -43,17 +54,6 @@ namespace GlobalMiles.Pos
             get
             {
                 return CommonController.Instance;
-            }
-        }
-
-        /// <summary>
-        /// Singleton access to PayWithMiles controller
-        /// </summary>
-        public PayWithMilesController PayWithMiles
-        {
-            get
-            {
-                return PayWithMilesController.Instance;
             }
         }
 

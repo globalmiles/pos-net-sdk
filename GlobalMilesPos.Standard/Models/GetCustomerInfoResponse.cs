@@ -24,13 +24,14 @@ namespace GlobalMiles.Pos.Models
         private int returnCode;
         private string returnDesc;
         private int recognitionId;
-        private int availablePoint;
-        private int loyaltyDiscountedPrice;
+        private double availableMilesAsAmount;
+        private double loyaltyDiscountedTotalAmount;
+        private string currency;
 
         /// <summary>
-        /// 0  Success, 1 and bigger than 1 unsuccessful
+        /// 0  Success, 1 and bigger than 1 unsuccessful.
         /// </summary>
-        [JsonProperty("returnCode")]
+        [JsonProperty("return_code")]
         public int ReturnCode 
         { 
             get 
@@ -45,9 +46,9 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// if success return is empty. if unsuccessful it returns error message
+        /// if success return is empty. if unsuccessful it returns error message.
         /// </summary>
-        [JsonProperty("returnDesc")]
+        [JsonProperty("return_desc")]
         public string ReturnDesc 
         { 
             get 
@@ -62,9 +63,9 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// Session based user identification number
+        /// Session based user identification number.
         /// </summary>
-        [JsonProperty("recognitionId")]
+        [JsonProperty("recognition_id")]
         public int RecognitionId 
         { 
             get 
@@ -79,36 +80,53 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// The available points that the customer can use in this transaction is in USD which is calculated from customer's current miles. EX: 12.56 USD == 1256
+        /// The available miles as an amount that the customer can use in this transaction which is calculated from customer's current miles.
         /// </summary>
-        [JsonProperty("availablePoint")]
-        public int AvailablePoint 
+        [JsonProperty("available_miles_as_amount")]
+        public double AvailableMilesAsAmount 
         { 
             get 
             {
-                return this.availablePoint; 
+                return this.availableMilesAsAmount; 
             } 
             set 
             {
-                this.availablePoint = value;
-                onPropertyChanged("AvailablePoint");
+                this.availableMilesAsAmount = value;
+                onPropertyChanged("AvailableMilesAsAmount");
             }
         }
 
         /// <summary>
-        /// Loyalty discounted price ex: 90.50 USD == 9050
+        /// Loyalty discounted total amount.
         /// </summary>
-        [JsonProperty("loyaltyDiscountedPrice")]
-        public int LoyaltyDiscountedPrice 
+        [JsonProperty("loyalty_discounted_total_amount")]
+        public double LoyaltyDiscountedTotalAmount 
         { 
             get 
             {
-                return this.loyaltyDiscountedPrice; 
+                return this.loyaltyDiscountedTotalAmount; 
             } 
             set 
             {
-                this.loyaltyDiscountedPrice = value;
-                onPropertyChanged("LoyaltyDiscountedPrice");
+                this.loyaltyDiscountedTotalAmount = value;
+                onPropertyChanged("LoyaltyDiscountedTotalAmount");
+            }
+        }
+
+        /// <summary>
+        /// ISO-4217 3-letter currency code.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string Currency 
+        { 
+            get 
+            {
+                return this.currency; 
+            } 
+            set 
+            {
+                this.currency = value;
+                onPropertyChanged("Currency");
             }
         }
     }

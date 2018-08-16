@@ -6,32 +6,31 @@ This file was automatically generated for Global Miles by APIMATIC v2.0 ( https:
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>GlobalMilesPos.Standard</id>
-    <version>1.0.0</version>
+    <version>2.0.0</version>
     <title>GlobalMilesPos.Standard</title>
     <authors>APIMATIC 2.0</authors>
     <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>By integrating GlobalMiles POS APIs, Merchants can offer to the GlobalMiles users  earn mile and shop with their miles in their in-stores.
+    <description>By integrating Global Miles POS APIs, Merchants can offer to the Global Miles users  earn mile and shop with their miles in their in-stores.
 
 Work Flow:
 Common to dos both for Earn/Pay with miles. 
 
-We will provide Client ID/ Secret Key. Ask us Please.
-Before using any APIS of us, you need to authorise by using your Client ID / Secret Key  to get access_token.  
-During shopping cashier ask GlobalMiles user  for  GSM No or QR code and enter into POS. 
-POS software Post this info to GlobalMiles Server by using the API  GetCustomerInfo and get uniq identifier in order to  use at TransactionResult API  if you follow EarnMiles work Flow or  use at  StartBonusPayment API if you follow Use your Miles work flow. 
+We will provide Client ID/ Secret Key.
+Before using any endpoints of us, you need to authorize by using your Client ID / Client Secret to get access_token. 
+During shopping cashier ask GlobalMiles user for GSM / FFP ID / Code or EMail and enter into POS. 
+POS software Post this info to Global Miles Server by using the endpoint GetCustomerInfo and get unique identifier in order to use at TransactionResult endpoint if you follow EarnMiles work Flow or use at  StartMilePayment endpoint if you follow use your Miles work flow. 
 
 Earn Mile: 
-After Getting Customer Info, Cashier will finalise the payment, as the payment done at POS post TransactionResult .
+After Getting Customer Info, Cashier will finalize the payment, as the payment done at POS post TransactionResult.
 
-Use Your Mile(Bonus):
+Pay with Miles:
+After Getting Customer Info, as all the items added to basket, Cashier ask for the payment method as the Global Miles selected as payment method, Pos software Post this info Global Miles Server by using the endpoint StartMilePayment.
 
-After Getting Customer Info, As all the items added to basket, Cashier ask for the payment method as the Globalmiles selected as payment method, Pos software Post this info GlobalMiles Server by using the API  StartBonusPayment .
-
-An OTP code is send to the Customer mobile phone. The Customer/cashier enter this OTP into POS and this info Post to Globalmiles server by the BonusComplete API.
+An OTP code is send to the Customer mobile phone. The Customer/cashier enter this OTP into POS and this info Post to Global Miles server by the CompleteMilePayment endpoint.
 
 Cancel Payment with Miles:
-By using Get Bonus Provision & CancelBonusPayment APIs  it allows to  list related sale on the POS and Cancel it .</description>
+By using Get Mile Provision & CancelMilePayment endpoints  it allows to  list related sale on the POS and Cancel it .</description>
     <summary />
     <releaseNotes />
     <copyright>Copyright 2016</copyright>

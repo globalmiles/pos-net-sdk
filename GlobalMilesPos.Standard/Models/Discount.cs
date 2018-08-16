@@ -21,29 +21,29 @@ namespace GlobalMiles.Pos.Models
     public class Discount : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string orijin;
+        private string origin;
         private string type;
-        private string mvalue;
+        private double mvalue;
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// Origin of the discount. 1: Global Miles, 2: Other.
         /// </summary>
-        [JsonProperty("orijin")]
-        public string Orijin 
+        [JsonProperty("origin")]
+        public string Origin 
         { 
             get 
             {
-                return this.orijin; 
+                return this.origin; 
             } 
             set 
             {
-                this.orijin = value;
-                onPropertyChanged("Orijin");
+                this.origin = value;
+                onPropertyChanged("Origin");
             }
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// Type of the discount. 0: amount based, 1: rate based.
         /// </summary>
         [JsonProperty("type")]
         public string Type 
@@ -60,10 +60,10 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// Value of the discount.
         /// </summary>
         [JsonProperty("value")]
-        public string Value 
+        public double Value 
         { 
             get 
             {

@@ -21,58 +21,40 @@ namespace GlobalMiles.Pos.Models
     public class CompleteMilePaymentRequest : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string bonusPaymentProvisionId;
-        private string oKCSicilNo;
-        private string oTP;
+        private string terminalId;
+        private string otp;
 
         /// <summary>
-        /// Provision ID
+        /// Terminal ID.
         /// </summary>
-        [JsonProperty("bonusPaymentProvisionId")]
-        public string BonusPaymentProvisionId 
+        [JsonProperty("terminal_id")]
+        public string TerminalId 
         { 
             get 
             {
-                return this.bonusPaymentProvisionId; 
+                return this.terminalId; 
             } 
             set 
             {
-                this.bonusPaymentProvisionId = value;
-                onPropertyChanged("BonusPaymentProvisionId");
+                this.terminalId = value;
+                onPropertyChanged("TerminalId");
             }
         }
 
         /// <summary>
-        /// Terminal code.
+        /// One time password that sends to customer phone.
         /// </summary>
-        [JsonProperty("OKCSicilNo")]
-        public string OKCSicilNo 
+        [JsonProperty("otp")]
+        public string Otp 
         { 
             get 
             {
-                return this.oKCSicilNo; 
+                return this.otp; 
             } 
             set 
             {
-                this.oKCSicilNo = value;
-                onPropertyChanged("OKCSicilNo");
-            }
-        }
-
-        /// <summary>
-        /// One time password that sends to customer phone
-        /// </summary>
-        [JsonProperty("OTP")]
-        public string OTP 
-        { 
-            get 
-            {
-                return this.oTP; 
-            } 
-            set 
-            {
-                this.oTP = value;
-                onPropertyChanged("OTP");
+                this.otp = value;
+                onPropertyChanged("Otp");
             }
         }
     }

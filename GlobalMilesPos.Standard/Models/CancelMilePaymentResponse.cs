@@ -25,9 +25,9 @@ namespace GlobalMiles.Pos.Models
         private string returnDesc;
 
         /// <summary>
-        /// 0  Success, 1 and bigger than 1 unsuccessful
+        /// 0  Success, 1 and bigger than 1 unsuccessful.
         /// </summary>
-        [JsonProperty("returnCode")]
+        [JsonProperty("return_code")]
         public int ReturnCode 
         { 
             get 
@@ -44,7 +44,7 @@ namespace GlobalMiles.Pos.Models
         /// <summary>
         /// if success return is empty. if unsuccessful it returns error message
         /// </summary>
-        [JsonProperty("returnDesc")]
+        [JsonProperty("return_desc")]
         public string ReturnDesc 
         { 
             get 

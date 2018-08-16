@@ -21,40 +21,22 @@ namespace GlobalMiles.Pos.Models
     public class CancelMilePaymentRequest : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string bonusPaymentProvisionId;
-        private string oKCSicilNo;
+        private string terminalId;
 
         /// <summary>
-        /// Provision ID
+        /// Terminal ID.
         /// </summary>
-        [JsonProperty("bonusPaymentProvisionId")]
-        public string BonusPaymentProvisionId 
+        [JsonProperty("terminal_id")]
+        public string TerminalId 
         { 
             get 
             {
-                return this.bonusPaymentProvisionId; 
+                return this.terminalId; 
             } 
             set 
             {
-                this.bonusPaymentProvisionId = value;
-                onPropertyChanged("BonusPaymentProvisionId");
-            }
-        }
-
-        /// <summary>
-        /// Terminal code.
-        /// </summary>
-        [JsonProperty("OKCSicilNo")]
-        public string OKCSicilNo 
-        { 
-            get 
-            {
-                return this.oKCSicilNo; 
-            } 
-            set 
-            {
-                this.oKCSicilNo = value;
-                onPropertyChanged("OKCSicilNo");
+                this.terminalId = value;
+                onPropertyChanged("TerminalId");
             }
         }
     }

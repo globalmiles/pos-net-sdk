@@ -23,13 +23,13 @@ namespace GlobalMiles.Pos.Models
         // These fields hold the values for the public properties.
         private int returnCode;
         private string returnDesc;
-        private string bonusPaymentProvisionId;
-        private bool oTPNeeded;
+        private int milesPaymentProvisionId;
+        private bool otpNeeded;
 
         /// <summary>
-        /// 0  Success, 1 and bigger than 1 unsuccessful
+        /// 0  Success, 1 and bigger than 1 unsuccessful.
         /// </summary>
-        [JsonProperty("returnCode")]
+        [JsonProperty("return_code")]
         public int ReturnCode 
         { 
             get 
@@ -44,9 +44,9 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// if success return is empty. if unsuccessful it returns error message
+        /// if success return is empty. if unsuccessful it returns error message.
         /// </summary>
-        [JsonProperty("returnDesc")]
+        [JsonProperty("return_desc")]
         public string ReturnDesc 
         { 
             get 
@@ -61,36 +61,36 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// Provision ID for the payment
+        /// Provision ID for the payment.
         /// </summary>
-        [JsonProperty("bonusPaymentProvisionId")]
-        public string BonusPaymentProvisionId 
+        [JsonProperty("miles_payment_provision_id")]
+        public int MilesPaymentProvisionId 
         { 
             get 
             {
-                return this.bonusPaymentProvisionId; 
+                return this.milesPaymentProvisionId; 
             } 
             set 
             {
-                this.bonusPaymentProvisionId = value;
-                onPropertyChanged("BonusPaymentProvisionId");
+                this.milesPaymentProvisionId = value;
+                onPropertyChanged("MilesPaymentProvisionId");
             }
         }
 
         /// <summary>
         /// Is a one-time password required?
         /// </summary>
-        [JsonProperty("OTPNeeded")]
-        public bool OTPNeeded 
+        [JsonProperty("otp_needed")]
+        public bool OtpNeeded 
         { 
             get 
             {
-                return this.oTPNeeded; 
+                return this.otpNeeded; 
             } 
             set 
             {
-                this.oTPNeeded = value;
-                onPropertyChanged("OTPNeeded");
+                this.otpNeeded = value;
+                onPropertyChanged("OtpNeeded");
             }
         }
     }

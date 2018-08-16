@@ -21,14 +21,15 @@ namespace GlobalMiles.Pos.Models
     public class Payment : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private int payAmount;
-        private int paymentType;
+        private double payAmount;
+        private string paymentType;
+        private int? milesPaymentProvisionId;
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// Amount of the payment.
         /// </summary>
-        [JsonProperty("payAmount")]
-        public int PayAmount 
+        [JsonProperty("pay_amount")]
+        public double PayAmount 
         { 
             get 
             {
@@ -42,10 +43,10 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// TODO: Write general description for this method
+        /// Type of the payment.
         /// </summary>
-        [JsonProperty("paymentType")]
-        public int PaymentType 
+        [JsonProperty("payment_type")]
+        public string PaymentType 
         { 
             get 
             {
@@ -55,6 +56,23 @@ namespace GlobalMiles.Pos.Models
             {
                 this.paymentType = value;
                 onPropertyChanged("PaymentType");
+            }
+        }
+
+        /// <summary>
+        /// Provision ID for pay with miles.
+        /// </summary>
+        [JsonProperty("miles_payment_provision_id")]
+        public int? MilesPaymentProvisionId 
+        { 
+            get 
+            {
+                return this.milesPaymentProvisionId; 
+            } 
+            set 
+            {
+                this.milesPaymentProvisionId = value;
+                onPropertyChanged("MilesPaymentProvisionId");
             }
         }
     }

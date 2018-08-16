@@ -18,61 +18,61 @@ using GlobalMiles.Pos.Utilities;
 
 namespace GlobalMiles.Pos.Models
 {
-    public class BonusProvision : BaseModel 
+    public class GetMileProvisionsResponse : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string bonusPaymentProvisionId;
-        private int usedBonusAmount;
-        private string dateTime;
+        private int returnCode;
+        private string returnDesc;
+        private List<Models.MileProvision> paymentProvisions;
 
         /// <summary>
-        /// Provision ID
+        /// 0  Success, 1 and bigger than 1 unsuccessful.
         /// </summary>
-        [JsonProperty("bonusPaymentProvisionId")]
-        public string BonusPaymentProvisionId 
+        [JsonProperty("return_code")]
+        public int ReturnCode 
         { 
             get 
             {
-                return this.bonusPaymentProvisionId; 
+                return this.returnCode; 
             } 
             set 
             {
-                this.bonusPaymentProvisionId = value;
-                onPropertyChanged("BonusPaymentProvisionId");
+                this.returnCode = value;
+                onPropertyChanged("ReturnCode");
             }
         }
 
         /// <summary>
-        /// Used Bonus Amount
+        /// if success return is empty. if unsuccessful it returns error message.
         /// </summary>
-        [JsonProperty("usedBonusAmount")]
-        public int UsedBonusAmount 
+        [JsonProperty("return_desc")]
+        public string ReturnDesc 
         { 
             get 
             {
-                return this.usedBonusAmount; 
+                return this.returnDesc; 
             } 
             set 
             {
-                this.usedBonusAmount = value;
-                onPropertyChanged("UsedBonusAmount");
+                this.returnDesc = value;
+                onPropertyChanged("ReturnDesc");
             }
         }
 
         /// <summary>
-        /// Date/time
+        /// A collection of the payments.
         /// </summary>
-        [JsonProperty("dateTime")]
-        public string DateTime 
+        [JsonProperty("payment_provisions")]
+        public List<Models.MileProvision> PaymentProvisions 
         { 
             get 
             {
-                return this.dateTime; 
+                return this.paymentProvisions; 
             } 
             set 
             {
-                this.dateTime = value;
-                onPropertyChanged("DateTime");
+                this.paymentProvisions = value;
+                onPropertyChanged("PaymentProvisions");
             }
         }
     }
