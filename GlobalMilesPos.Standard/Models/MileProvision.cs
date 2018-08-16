@@ -21,48 +21,66 @@ namespace GlobalMiles.Pos.Models
     public class MileProvision : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private string bonusPaymentProvisionId;
-        private int usedBonusAmount;
+        private int milesPaymentProvisionId;
+        private double usedMilesAsAmount;
+        private string currency;
         private string dateTime;
 
         /// <summary>
         /// Provision ID
         /// </summary>
-        [JsonProperty("bonusPaymentProvisionId")]
-        public string BonusPaymentProvisionId 
+        [JsonProperty("miles_payment_provision_id")]
+        public int MilesPaymentProvisionId 
         { 
             get 
             {
-                return this.bonusPaymentProvisionId; 
+                return this.milesPaymentProvisionId; 
             } 
             set 
             {
-                this.bonusPaymentProvisionId = value;
-                onPropertyChanged("BonusPaymentProvisionId");
+                this.milesPaymentProvisionId = value;
+                onPropertyChanged("MilesPaymentProvisionId");
             }
         }
 
         /// <summary>
-        /// Used Bonus Amount
+        /// Used amount
         /// </summary>
-        [JsonProperty("usedBonusAmount")]
-        public int UsedBonusAmount 
+        [JsonProperty("used_miles_as_amount")]
+        public double UsedMilesAsAmount 
         { 
             get 
             {
-                return this.usedBonusAmount; 
+                return this.usedMilesAsAmount; 
             } 
             set 
             {
-                this.usedBonusAmount = value;
-                onPropertyChanged("UsedBonusAmount");
+                this.usedMilesAsAmount = value;
+                onPropertyChanged("UsedMilesAsAmount");
             }
         }
 
         /// <summary>
-        /// Date/time
+        /// ISO-4217 3-letter currency code.
         /// </summary>
-        [JsonProperty("dateTime")]
+        [JsonProperty("currency")]
+        public string Currency 
+        { 
+            get 
+            {
+                return this.currency; 
+            } 
+            set 
+            {
+                this.currency = value;
+                onPropertyChanged("Currency");
+            }
+        }
+
+        /// <summary>
+        /// Date time of the mile provision.
+        /// </summary>
+        [JsonProperty("date_time")]
         public string DateTime 
         { 
             get 

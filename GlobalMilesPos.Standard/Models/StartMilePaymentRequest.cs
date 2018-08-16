@@ -21,16 +21,17 @@ namespace GlobalMiles.Pos.Models
     public class StartMilePaymentRequest : BaseModel 
     {
         // These fields hold the values for the public properties.
-        private int totalReceiptAmount;
-        private int usedBonusAmount;
+        private double totalReceiptAmount;
+        private double usedMilesAsAmount;
+        private string currency;
         private int recognitionId;
-        private string oKCSicilNo;
+        private string terminalId;
 
         /// <summary>
-        /// Total Receipt Amount  ex:12.35 TL == 1235
+        /// Total receipt amount.
         /// </summary>
-        [JsonProperty("totalReceiptAmount")]
-        public int TotalReceiptAmount 
+        [JsonProperty("total_receipt_amount")]
+        public double TotalReceiptAmount 
         { 
             get 
             {
@@ -44,26 +45,43 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// Used Amount that has been used in the shopping  ex:0.85 TL == 85
+        /// Used amount that has been used in the shopping.
         /// </summary>
-        [JsonProperty("usedBonusAmount")]
-        public int UsedBonusAmount 
+        [JsonProperty("used_miles_as_amount")]
+        public double UsedMilesAsAmount 
         { 
             get 
             {
-                return this.usedBonusAmount; 
+                return this.usedMilesAsAmount; 
             } 
             set 
             {
-                this.usedBonusAmount = value;
-                onPropertyChanged("UsedBonusAmount");
+                this.usedMilesAsAmount = value;
+                onPropertyChanged("UsedMilesAsAmount");
             }
         }
 
         /// <summary>
-        /// Session based user identification number
+        /// ISO-4217 3-letter currency code.
         /// </summary>
-        [JsonProperty("recognitionId")]
+        [JsonProperty("currency")]
+        public string Currency 
+        { 
+            get 
+            {
+                return this.currency; 
+            } 
+            set 
+            {
+                this.currency = value;
+                onPropertyChanged("Currency");
+            }
+        }
+
+        /// <summary>
+        /// Session based user identification number.
+        /// </summary>
+        [JsonProperty("recognition_id")]
         public int RecognitionId 
         { 
             get 
@@ -78,19 +96,19 @@ namespace GlobalMiles.Pos.Models
         }
 
         /// <summary>
-        /// Terminal code.
+        /// Terminal ID.
         /// </summary>
-        [JsonProperty("OKCSicilNo")]
-        public string OKCSicilNo 
+        [JsonProperty("terminal_id")]
+        public string TerminalId 
         { 
             get 
             {
-                return this.oKCSicilNo; 
+                return this.terminalId; 
             } 
             set 
             {
-                this.oKCSicilNo = value;
-                onPropertyChanged("OKCSicilNo");
+                this.terminalId = value;
+                onPropertyChanged("TerminalId");
             }
         }
     }
