@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-GlobalMilesPos.Standard
-This file was automatically generated for Global Miles by APIMATIC v2.0 ( https://apimatic.io )
+ - GlobalMilesPos.Standard
+ -
+ - This file was automatically generated for Global Miles by APIMATIC v2.0 ( https://apimatic.io ).
 -->
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>GlobalMilesPos.Standard</id>
     <version>2.0.0</version>
     <title>GlobalMilesPos.Standard</title>
-    <authors>APIMATIC 2.0</authors>
+    <authors>APIMATIC SDK Generator</authors>
     <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>By integrating Global Miles POS APIs, Merchants can offer to the Global Miles users  earn mile and shop with their miles in their in-stores.

@@ -251,7 +251,7 @@ Task<Models.CancelMilePaymentResponse> DeleteCancelMilePayment(int milesPaymentP
 #### Example Usage
 
 ```csharp
-int milesPaymentProvisionId = 226;
+int milesPaymentProvisionId = 241;
 var body = new Models.CancelMilePaymentRequest();
 
 Models.CancelMilePaymentResponse result = await payWithMiles.DeleteCancelMilePayment(milesPaymentProvisionId, body);
@@ -282,7 +282,7 @@ Task<Models.CompleteMilePaymentResponse> UpdateCompleteMilePayment(int milesPaym
 #### Example Usage
 
 ```csharp
-int milesPaymentProvisionId = 226;
+int milesPaymentProvisionId = 241;
 var body = new Models.CompleteMilePaymentRequest();
 
 Models.CompleteMilePaymentResponse result = await payWithMiles.UpdateCompleteMilePayment(milesPaymentProvisionId, body);
@@ -516,11 +516,11 @@ Task<Models.GetCustomerInfoResponse> GetCustomerInfo(
 ```csharp
 string readCode = "read_code";
 string readCodeType = "read_code_type";
-double totalAmount = 63.485888314194;
-double totalVatAmount = 63.485888314194;
+double totalAmount = 241.640897237994;
+double totalVatAmount = 241.640897237994;
 string currency = "currency";
-int partnerId = 63;
-int branchId = 63;
+int partnerId = 241;
+int branchId = 241;
 string terminalId = "terminal_id";
 
 Models.GetCustomerInfoResponse result = await common.GetCustomerInfo(readCode, readCodeType, totalAmount, totalVatAmount, currency, partnerId, branchId, terminalId);
